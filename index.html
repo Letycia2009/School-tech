@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#8e44ad"
+    >
+
+    <meta
+        name="description"
+        content="School Game App - Conquiste, evolua e aprenda."
+    >
+
+    <title>School Game App</title>
+
+    <!-- ==========================================
+         PWA
+    =========================================== -->
+
+    <link
+        rel="manifest"
+        href="manifest.json"
+    >
+
+    <!-- ==========================================
+         FAVICON
+    =========================================== -->
+
+    <link
+        rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎒%3C/text%3E%3C/svg%3E"
+    >
+
+    <!-- ==========================================
+         GOOGLE FONT - POPPINS
+    =========================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- ==========================================
+         FONT AWESOME
+    =========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- ==========================================
+         CSS
+    =========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- ==========================================
+         AVISO OFFLINE
+    =========================================== -->
+
+    <div
+        id="offlineBanner"
+        class="offline-banner"
+        role="status"
+        aria-live="polite"
+    >
+
+        <i class="fa-solid fa-wifi"></i>
+
+        <span>
+            Você está offline. Algumas funções podem ficar limitadas.
+        </span>
+
+    </div>
+
+
+    <!-- ==========================================
+         TELA INICIAL
+    =========================================== -->
+
+    <section
+        id="startScreen"
+        class="screen start-screen"
+    >
+
+        <!-- Decorações -->
+
+        <div class="start-decoration decoration-1">
+            🎒
+        </div>
+
+        <div class="start-decoration decoration-2">
+            ⭐
+        </div>
+
+        <div class="start-decoration decoration-3">
+            📚
+        </div>
+
+        <!-- Conteúdo -->
+
+        <div class="start-content">
+
+            <div class="logo-icon">
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+            </div>
+
+            <h1>
+                SCHOOL GAME
+            </h1>
+
+            <div class="start-subtitle">
+                APP
+            </div>
+
+            <p class="start-description">
+
+                Uma nova forma de aprender,
+                explorar a escola e conquistar
+                novos conhecimentos.
+
+            </p>
+
+            <!-- BOTÃO PARA LOGIN -->
+
+            <button
+                type="button"
+                id="startButton"
+                class="primary-button"
+            >
+
+                <i class="fa-solid fa-right-to-bracket"></i>
+
+                ENTRAR
+
+            </button>
+
+            <!-- Status da conexão -->
+
+            <div class="offline-status">
+
+                <span
+                    id="connectionDot"
+                ></span>
+
+                <span
+                    id="connectionText"
+                >
+                    Verificando conexão...
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    
+
+    <!-- ==========================================
+         TELA PRINCIPAL
+    =========================================== -->
+
+    <section
+        id="mainScreen"
+        class="screen main-screen hidden"
+    >
+
+        <!-- ======================================
+             TOPBAR
+        ======================================= -->
+
+        <header class="topbar">
+
+            <!-- Marca -->
+
+            <div class="brand">
+
+                <div class="brand-icon">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        School Game
+                    </h2>
+
+                    <span>
+                        Conquiste, evolua e aprenda
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Parte direita -->
+
+            <div class="topbar-right">
+
+                <!-- Conexão -->
+
+                <div class="connection-indicator">
+
+                    <span
+                        id="mainConnectionDot"
+                    ></span>
+
+                    <span
+                        id="mainConnectionText"
+                    >
+                        Online
+                    </span>
+
+                </div>
+
+
+                <!-- XP -->
+
+                <div class="xp-box">
+
+                    <i class="fa-solid fa-star"></i>
+
+                    <div>
+
+                        <strong>
+
+                            <span id="xpValue">
+                                0
+                            </span>
+
+                        </strong>
+
+                        <small>
+                            experiência
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Nível -->
+
+                <div class="level-box">
+
+                    <span>
+                        NÍVEL
+                    </span>
+
+                    <strong id="levelValue">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ======================================
+             CONTEÚDO
+        ======================================= -->
+
+        <main class="main-content">
+
+            <!-- ==================================
+                 BOAS-VINDAS
+            =================================== -->
+
+            <section class="welcome-card">
+
+                <div class="welcome-text">
+
+                    <span class="small-title">
+                        BEM-VINDO(A) AO SCHOOL GAME
+                    </span>
+
+                    <h1>
+
+                        Aprenda.
+                        <span>
+                            Evolua.
+                        </span>
+                        Conquiste.
+
+                    </h1>
+
+                    <p>
+
+                        Explore as matérias,
+                        descubra novos conhecimentos,
+                        responda perguntas e conquiste
+                        XP durante sua jornada.
+
+                    </p>
+
+                    <button
+                        type="button"
+                        id="continueButton"
+                        class="secondary-button"
+                    >
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                        Continuar jornada
+
+                    </button>
+
+                </div>
+
+
+                <!-- Ilustração -->
+
+                <div class="welcome-illustration">
+
+                    <div class="illustration-circle">
+
+                        <i class="fa-solid fa-school"></i>
+
+                    </div>
+
+                    <div class="floating-icon icon-book">
+
+                        <i class="fa-solid fa-book"></i>
+
+                    </div>
+
+                    <div class="floating-icon icon-star">
+
+                        <i class="fa-solid fa-star"></i>
+
+                    </div>
+
+                    <div class="floating-icon icon-trophy">
+
+                        <i class="fa-solid fa-trophy"></i>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 MENU
+            =================================== -->
+
+            <section class="menu-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span>
+                            EXPLORE
+                        </span>
+
+                        <h2>
+                            O que você quer fazer?
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="menu-grid">
+
+                    <!-- MATÉRIAS -->
+
+                    <button
+                        type="button"
+                        class="menu-card"
+                        data-section="subjects"
+                    >
+
+                        <div class="menu-icon">
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                        </div>
+
+                        <div class="menu-card-content">
+
+                            <h3>
+                                Matérias
+                            </h3>
+
+                            <p>
+                                Estude e explore
+                                diferentes matérias.
+                            </p>
+
+                        </div>
+
+                        <i
+                            class="fa-solid fa-chevron-right arrow"
+                        ></i>
+
+                    </button>
+
+
+                    <!-- SECRETARIA -->
+
+                    <button
+                        type="button"
+                        class="menu-card"
+                        data-section="secretary"
+                    >
+
+                        <div class="menu-icon">
+
+                            <i class="fa-solid fa-school"></i>
+
+                        </div>
+
+                        <div class="menu-card-content">
+
+                            <h3>
+                                Secretaria
+                            </h3>
+
+                            <p>
+                                Consulte informações
+                                e contatos da escola.
+                            </p>
+
+                        </div>
+
+                        <i
+                            class="fa-solid fa-chevron-right arrow"
+                        ></i>
+
+                    </button>
+
+
+                    <!-- SOBRE -->
+
+                    <button
+                        type="button"
+                        class="menu-card"
+                        data-section="about"
+                    >
+
+                        <div class="menu-icon">
+
+                            <i class="fa-solid fa-circle-info"></i>
+
+                        </div>
+
+                        <div class="menu-card-content">
+
+                            <h3>
+                                Sobre
+                            </h3>
+
+                            <p>
+                                Saiba mais sobre
+                                o School Game.
+                            </p>
+
+                        </div>
+
+                        <i
+                            class="fa-solid fa-chevron-right arrow"
+                        ></i>
+
+                    </button>
+
+
+                    <!-- CONFIGURAÇÕES -->
+
+                    <button
+                        type="button"
+                        class="menu-card"
+                        data-section="settings"
+                    >
+
+                        <div class="menu-icon">
+
+                            <i class="fa-solid fa-gear"></i>
+
+                        </div>
+
+                        <div class="menu-card-content">
+
+                            <h3>
+                                Configurações
+                            </h3>
+
+                            <p>
+                                Personalize o aplicativo
+                                do seu jeito.
+                            </p>
+
+                        </div>
+
+                        <i
+                            class="fa-solid fa-chevron-right arrow"
+                        ></i>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 PERGUNTAS
+            =================================== -->
+
+            <section class="question-card">
+
+                <div class="question-icon">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                </div>
+
+
+                <div class="question-content">
+
+                    <span>
+                        ASSISTENTE
+                    </span>
+
+                    <h2>
+                        Tem alguma dúvida?
+                    </h2>
+
+                    <p>
+                        Faça uma pergunta e
+                        descubra a resposta.
+                    </p>
+
+                </div>
+
+
+                <div class="question-input-area">
+
+                    <input
+                        type="text"
+                        id="questionInput"
+                        placeholder="Digite sua pergunta..."
+                        autocomplete="off"
+                        aria-label="Digite sua pergunta"
+                    >
+
+                    <button
+                        type="button"
+                        id="questionButton"
+                        title="Enviar pergunta"
+                        aria-label="Enviar pergunta"
+                    >
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 MINI GAMES
+            =================================== -->
+
+            <section class="games-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span>
+                            DIVERSÃO
+                        </span>
+
+                        <h2>
+                            Mini Games
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="games-grid">
+
+                    <!-- QUIZ -->
+
+                    <button
+                        type="button"
+                        class="game-card"
+                        data-game="quiz"
+                    >
+
+                        <i class="fa-solid fa-circle-question"></i>
+
+                        <div>
+
+                            <strong>
+                                Quiz
+                            </strong>
+
+                            <small>
+                                Teste seus conhecimentos
+                            </small>
+
+                        </div>
+
+                    </button>
+
+
+                    <!-- MEMÓRIA -->
+
+                    <button
+                        type="button"
+                        class="game-card"
+                        data-game="memory"
+                    >
+
+                        <i class="fa-solid fa-brain"></i>
+
+                        <div>
+
+                            <strong>
+                                Memória
+                            </strong>
+
+                            <small>
+                                Exercite sua memória
+                            </small>
+
+                        </div>
+
+                    </button>
+
+
+                    <!-- DESAFIO -->
+
+                    <button
+                        type="button"
+                        class="game-card"
+                        data-game="challenge"
+                    >
+
+                        <i class="fa-solid fa-trophy"></i>
+
+                        <div>
+
+                            <strong>
+                                Desafio
+                            </strong>
+
+                            <small>
+                                Aceite um novo desafio
+                            </small>
+
+                        </div>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </section>
+
+
+    <!-- ==========================================
+         MODAL
+    =========================================== -->
+
+    <div
+        id="modal"
+        class="modal hidden"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <!-- Fundo -->
+
+        <div
+            class="modal-overlay"
+            id="modalOverlay"
+        ></div>
+
+        <!-- Caixa -->
+
+        <div class="modal-box">
+
+            <!-- Fechar -->
+
+            <button
+                type="button"
+                id="closeModal"
+                class="close-modal"
+                aria-label="Fechar"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+            <!-- Conteúdo colocado pelo JavaScript -->
+
+            <div id="modalContent">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         TOAST
+    =========================================== -->
+
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+    >
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <span id="toastMessage">
+            Concluído!
+        </span>
+
+    </div>
+
+
+    <!-- ==========================================
+         JAVASCRIPT PRINCIPAL
+    =========================================== -->
+
+    <script src="script.js"></script>
+
+
+    <!-- ==========================================
+         SERVICE WORKER
+    =========================================== -->
+
+    <script>
+
+        if ("serviceWorker" in navigator) {
+
+            window.addEventListener("load", () => {
+
+                /*
+                 * Service Workers precisam de HTTPS
+                 * ou ambiente local.
+                 */
+
+                const ambienteSeguro =
+                    window.isSecureContext ||
+                    location.hostname === "localhost" ||
+                    location.hostname === "127.0.0.1";
+
+                if (!ambienteSeguro) {
+
+                    console.info(
+                        "Service Worker não registrado: o app não está em um ambiente seguro."
+                    );
+
+                    return;
+
+                }
+
+                navigator.serviceWorker
+                    .register("./service-worker.js")
+
+                    .then(registration => {
+
+                        console.log(
+                            "Service Worker registrado:",
+                            registration.scope
+                        );
+
+                    })
+
+                    .catch(error => {
+
+                        console.error(
+                            "Erro ao registrar Service Worker:",
+                            error
+                        );
+
+                    });
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+{
+    "name": "School Game App",
+    "short_name": "School Game",
+    "description": "Conquiste, evolua e aprenda.",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#f8f7fb",
+    "theme_color": "#8e44ad",
+    "orientation": "landscape",
+    "lang": "pt-BR"
+}

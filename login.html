@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - School Game App</title>
+
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         TELA DE LOGIN / CADASTRO
+    ====================================================== -->
+
+    <section id="loginScreen" class="screen login-screen">
+
+        <!-- Decorações -->
+        <div class="login-background-decoration login-decoration-1"></div>
+        <div class="login-background-decoration login-decoration-2"></div>
+
+        <div class="login-container">
+
+            <!-- LADO ESQUERDO -->
+            <div class="login-brand">
+
+                <div class="login-logo">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <span class="login-mini-title">
+                    SCHOOL GAME
+                </span>
+
+                <h1>
+                    Sua jornada
+                    <span>começa aqui.</span>
+                </h1>
+
+                <p>
+                    Entre na sua conta para continuar
+                    aprendendo, conquistar XP e acompanhar
+                    sua evolução.
+                </p>
+
+                <div class="login-benefits">
+
+                    <div class="login-benefit">
+                        <i class="fa-solid fa-star"></i>
+                        <span>Ganhe XP</span>
+                    </div>
+
+                    <div class="login-benefit">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Aprenda novas matérias</span>
+                    </div>
+
+                    <div class="login-benefit">
+                        <i class="fa-solid fa-trophy"></i>
+                        <span>Conquiste desafios</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CARD DE LOGIN -->
+            <div class="login-card">
+
+                <!-- VOLTAR -->
+                <button
+                    type="button"
+                    id="backToStart"
+                    class="login-back-button"
+                    aria-label="Voltar para a tela inicial"
+                >
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+
+                <!-- CABEÇALHO -->
+                <div class="login-header">
+
+                    <span class="login-label">
+                        BEM-VINDO(A) DE VOLTA
+                    </span>
+
+                    <h2 id="loginTitle">
+                        Entrar na conta
+                    </h2>
+
+                    <p id="loginDescription">
+                        Entre com seu e-mail e senha
+                        para continuar.
+                    </p>
+
+                </div>
+
+                <!-- FORMULÁRIO -->
+                <form id="authForm">
+
+                    <!-- NOME -->
+                    <div
+                        class="form-group hidden"
+                        id="nameGroup"
+                    >
+                        <label for="nameInput">
+                            Nome
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="nameInput"
+                                placeholder="Digite seu nome"
+                                autocomplete="name"
+                            >
+
+                        </div>
+                    </div>
+
+                    <!-- E-MAIL -->
+                    <div class="form-group">
+
+                        <label for="emailInput">
+                            E-mail
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="emailInput"
+                                placeholder="seuemail@exemplo.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <!-- SENHA -->
+                    <div class="form-group">
+
+                        <label for="passwordInput">
+                            Senha
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="passwordInput"
+                                placeholder="Digite sua senha"
+                                autocomplete="current-password"
+                                minlength="6"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle"
+                                aria-label="Mostrar senha"
+                            >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MENSAGEM -->
+                    <div
+                        id="authMessage"
+                        class="auth-message"
+                        role="alert"
+                        aria-live="polite"
+                    ></div>
+
+                    <!-- BOTÃO -->
+                    <button
+                        type="submit"
+                        id="authButton"
+                        class="login-button"
+                    >
+
+                        <span id="authButtonText">
+                            Entrar
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </form>
+
+                <!-- LOGIN / CADASTRO -->
+                <div class="login-switch">
+
+                    <span id="switchText">
+                        Ainda não possui uma conta?
+                    </span>
+
+                    <button
+                        type="button"
+                        id="switchAuthMode"
+                    >
+                        Criar conta
+                    </button>
+
+                </div>
+
+                <!-- SEGURANÇA -->
+                <div class="login-security">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <span>
+                        Seus dados são protegidos neste dispositivo.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- JavaScript -->
+    <script src="login.js"></script>
+
+</body>
+
+</html>
